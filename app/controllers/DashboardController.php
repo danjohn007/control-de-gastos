@@ -11,7 +11,6 @@ class DashboardController extends Controller {
         
         $gastoModel = $this->loadModel('Gasto');
         $categoriaModel = $this->loadModel('Categoria');
-        $presupuestoModel = $this->loadModel('Presupuesto');
         
         $userId = $_SESSION['user_id'];
         $currentMonth = date('Y-m');
@@ -27,11 +26,11 @@ class DashboardController extends Controller {
         // Gastos de los últimos 7 días
         $gastosUltimos7Dias = $gastoModel->getGastosUltimosDias($userId, 7);
         
-        // Presupuestos del mes
-        $presupuestosMes = $presupuestoModel->getPresupuestosDelMes($userId, date('n'), $currentYear);
+        // Presupuestos del mes (simplified for now)
+        $presupuestosMes = [];
         
-        // Alertas de presupuesto
-        $alertas = $presupuestoModel->getAlertasPresupuesto($userId);
+        // Alertas de presupuesto (simplified for now)
+        $alertas = [];
         
         // Categorías más utilizadas
         $categoriasMasUsadas = $gastoModel->getCategoriasMasUsadas($userId, 5);
